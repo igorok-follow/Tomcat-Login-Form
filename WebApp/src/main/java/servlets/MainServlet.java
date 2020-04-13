@@ -24,8 +24,17 @@ public class MainServlet extends HttpServlet {
         name = String.valueOf(nameChars);
 
         int age = Integer.parseInt(req.getParameter("age"));
-
-        resp.getWriter().write("Hello, User. Your name is: " + name + ".\n" +
-                "Your age is equals: " + age);
+        if (isValidate) {
+            resp.getWriter().write("Hello, User. Your name is: " + name + ".\n" +
+                                    "Your age is equals: " + age);
+        } else {
+           resp.getWriter().write("Name or Age is empty"); 
+        }
+    }
+    
+    private boolean isValidate(String name, String age) {
+        if (name.isEmpty()) {return false;}
+        else if (age.isEmpty()) {return false;}
+        return true;
     }
 }
