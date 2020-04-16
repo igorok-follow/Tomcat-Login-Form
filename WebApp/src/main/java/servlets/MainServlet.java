@@ -25,7 +25,17 @@ public class MainServlet extends HttpServlet {
 
         int age = Integer.parseInt(req.getParameter("age"));
 
-        resp.getWriter().write("Hello, User. Your name is: " + name + ".\n" +
+        if (isValidate(name, age)) {
+            resp.getWriter().write("Hello, User. Your name is: " + name + ".\n" +
                 "Your age is equals: " + age);
+        } else {
+            resp.getWriter().write("Validation error");
+        }
+    }
+    
+    private boolean isValidate(String name, int age) {
+        if (name = null) {return false;}
+        else if (age != null) {return false;}
+        return null;
     }
 }
